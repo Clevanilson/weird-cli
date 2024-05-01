@@ -6,14 +6,15 @@ class ArgsHandler {
     /** @type {Args} */
     const args = {
       command: undefined,
-      options: [],
+      options: new Map(),
     };
     const argsIgnoreOffset = 2;
     for (let index = argsIgnoreOffset; index < argv.length; index++) {
       if (index === argsIgnoreOffset) {
         args.command = new Command(argv[index], []);
       } else if (this.#isOption(argv[index])) {
-        args.options.push(new Option(argv[index]));
+        const option = new Option(argv[index]);
+        args.options.set(option.name, option);
       } else {
         args.command?.args?.push(argv[index]);
       }
@@ -38,5 +39,5 @@ module.exports = {
 /**
  * @typedef Args
  * @prop {Command | undefined} command
- * @prop {Option[]} options
+ * @prop {Map<string, Option>} options
  */

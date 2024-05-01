@@ -12,6 +12,9 @@ test("Should parse args", () => {
   ]);
   expect(output).toEqual({
     command: new Command("create", ["arg1", "arg2"]),
-    options: [new Option("--first-option=2"), new Option("--second-option")],
+    options: new Map([
+      ["firstOption", new Option("--first-option=2")],
+      ["secondOption", new Option("--second-option")],
+    ]),
   });
 });
