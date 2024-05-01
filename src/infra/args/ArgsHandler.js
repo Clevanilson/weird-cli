@@ -1,4 +1,5 @@
 const { Command } = require("./Command");
+const { Option } = require("./Option");
 
 class ArgsHandler {
   parse(argv) {
@@ -30,13 +31,8 @@ class ArgsHandler {
   }
 }
 
-class Option {
-  constructor(option) {}
-}
-
 module.exports = {
   ArgsHandler,
-  Option,
 };
 
 /**
