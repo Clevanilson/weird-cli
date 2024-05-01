@@ -5,7 +5,7 @@ class KebabToCamel {
   static parse(prop) {
     const words = prop.split("-");
     return words.reduce((previousWord, currentWord, index) => {
-      if (!index) return previousWord;
+      if (!index) return currentWord;
       return previousWord + Capitalize.execute(currentWord);
     }, "");
   }
